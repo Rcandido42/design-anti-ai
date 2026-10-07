@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infrastructure Telemetry — Cluster Operations</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="shell">
+    <!-- SUBTLE UTILITY BAR -->
+    <nav class="utility-bar" aria-label="Breadcrumb navigation">
+      <div class="nav-brand">
+        <span class="brand-glyph"></span>
+        <span class="brand-text">ops-runtime</span>
+        <span class="nav-separator">/</span>
+        <span class="nav-current">us-east-1a</span>
+      </div>
+      <div class="nav-actions">
+        <span class="system-indicator">
+          <span class="indicator-dot" aria-hidden="true"></span>
+          Cluster healthy
+        </span>
+        <button type="button" class="btn-ghost btn-sm">Docs</button>
+      </div>
+    </nav>
+
+    <!-- PURPOSEFUL HEADER -->
+    <header class="page-header">
+      <div class="header-content">
+        <h1 class="page-title">Cluster Telemetry & Workload Routing</h1>
+        <p class="page-desc">
+          Real-time ingress metrics across 14 active edge worker pods. Traffic rerouted automatically via health probes.
+        </p>
+      </div>
+      <div class="header-controls">
+        <button type="button" class="btn-secondary">Export Metrics</button>
+        <button type="button" class="btn-primary">Deploy Revision</button>
+      </div>
+    </header>
+
+    <!-- KPI STRIP (FLAT GEOMETRY, NO REDUNDANT NESTED BOXES) -->
+    <section class="kpi-strip" aria-label="Key Performance Indicators">
+      <div class="kpi-cell">
+        <span class="kpi-label">Ingress Throughput</span>
+        <div class="kpi-value-row">
+          <span class="kpi-value">1.42M</span>
+          <span class="kpi-unit">req/s</span>
+        </div>
+        <span class="kpi-meta">+4.2% vs 1h baseline</span>
+      </div>
+
+      <div class="kpi-cell">
+        <span class="kpi-label">P99 Latency</span>
+        <div class="kpi-value-row">
+          <span class="kpi-value">3.4</span>
+          <span class="kpi-unit">ms</span>
+        </div>
+        <span class="kpi-meta text-success">Within SLA limit (< 5ms)</span>
+      </div>
+
+      <div class="kpi-cell">
+        <span class="kpi-label">Error Rate</span>
+        <div class="kpi-value-row">
+          <span class="kpi-value">0.002%</span>
+        </div>
+        <span class="kpi-meta">12 drops / 500k reqs</span>
+      </div>
+
+      <div class="kpi-cell">
+        <span class="kpi-label">Active Worker Pods</span>
+        <div class="kpi-value-row">
+          <span class="kpi-value">14 / 16</span>
+        </div>
+        <span class="kpi-meta">2 standby reserve</span>
+      </div>
+    </section>
+
+    <!-- STRUCTURED DATA TABLE INSTEAD OF NESTED GLASS BOXES -->
+    <section class="workloads-panel" aria-label="Active Worker Pods">
+      <div class="panel-head">
+        <h2 class="panel-title">Workload Node Distribution</h2>
+        <div class="panel-actions">
+          <button type="button" class="btn-ghost btn-xs">Filter by zone</button>
+          <button type="button" class="btn-ghost btn-xs">Refresh (30s)</button>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th scope="col">Node Identifier</th>
+              <th scope="col">Zone</th>
+              <th scope="col">Memory Usage</th>
+              <th scope="col">CPU Load</th>
+              <th scope="col">Status</th>
+              <th scope="col" class="text-right">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="cell-mono font-medium">pod-worker-01a</td>
+              <td>us-east-1a</td>
+              <td class="cell-mono">1.2 GB / 4 GB</td>
+              <td class="cell-mono">24.1%</td>
+              <td><span class="status-badge status-healthy">Healthy</span></td>
+              <td class="text-right">
+                <button type="button" class="btn-table-action">Logs</button>
+                <button type="button" class="btn-table-action">Drain</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="cell-mono font-medium">pod-worker-02a</td>
+              <td>us-east-1a</td>
+              <td class="cell-mono">2.8 GB / 4 GB</td>
+              <td class="cell-mono">68.4%</td>
+              <td><span class="status-badge status-healthy">Healthy</span></td>
+              <td class="text-right">
+                <button type="button" class="btn-table-action">Logs</button>
+                <button type="button" class="btn-table-action">Drain</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="cell-mono font-medium">pod-worker-03b</td>
+              <td>us-east-1b</td>
+              <td class="cell-mono">3.9 GB / 4 GB</td>
+              <td class="cell-mono">92.0%</td>
+              <td><span class="status-badge status-warning">High Load</span></td>
+              <td class="text-right">
+                <button type="button" class="btn-table-action">Logs</button>
+                <button type="button" class="btn-table-action">Drain</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</body>
+</html>

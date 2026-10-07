@@ -1,0 +1,29 @@
+{
+  "name": "anti-slop-design",
+  "version": "0.1.0",
+  "description": "An open-source skill and toolkit for coding agents to audit and transform generic AI-generated interfaces into deliberate, high-character designs.",
+  "type": "module",
+  "bin": {
+    "anti-slop": "./bin/anti-slop.mjs"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "audit": "node bin/anti-slop.mjs audit",
+    "lint:rules": "node bin/anti-slop.mjs check-rules"
+  },
+  "keywords": [
+    "agent-skill",
+    "design-system",
+    "ui-audit",
+    "anti-slop",
+    "claude-code",
+    "codex",
+    "antigravity",
+    "frontend-refactor"
+  ],
+  "author": "Anti-Slop Design Contributors",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
